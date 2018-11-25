@@ -1,2 +1,2 @@
-# PyEwaldDoc
+# PyEwald
 PyEwald  documentation
