@@ -11,7 +11,10 @@ Welcome to PyEwald's documentation!
    :caption: Contents:
 
    Theory
-   code
+   supercell
+   matrix
+   configuration
+   utility
    tests
    license
 

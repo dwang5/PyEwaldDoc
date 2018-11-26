@@ -1,0 +1,9 @@
+Supercell
+**************************
+
+Construct the supercell.
+
+.. automodule:: supercell
+   :members:
+
+

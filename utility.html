@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to PyEwald’s documentation! &mdash; PyEwald 0.1 documentation</title>
+  <title>Utility &mdash; PyEwald 0.1 documentation</title>
   
 
   
@@ -28,7 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Theory" href="Theory.html" /> 
+    <link rel="next" title="Tests" href="tests.html" />
+    <link rel="prev" title="Configuration" href="configuration.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -47,7 +48,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> PyEwald
+            <a href="index.html" class="icon icon-home"> PyEwald
           
 
           
@@ -82,12 +83,12 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Theory.html">Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supercell.html">Supercell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">Interaction matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tests.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
@@ -104,7 +105,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">PyEwald</a>
+          <a href="index.html">PyEwald</a>
         
       </nav>
 
@@ -133,15 +134,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Welcome to PyEwald’s documentation!</li>
+      <li>Utility</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/utility.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -154,38 +155,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-pyewald-s-documentation">
-<h1>Welcome to PyEwald’s documentation!<a class="headerlink" href="#welcome-to-pyewald-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Theory.html">Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="supercell.html">Supercell</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix.html">Interaction matrix</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="matrix.html#charge-charge">Charge_charge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matrix.html#dipole-dipole-and-others">Dipole_dipole and others</a></li>
+  <div class="section" id="module-src.utility">
+<span id="utility"></span><h1>Utility<a class="headerlink" href="#module-src.utility" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-utility"></span><dl class="function">
+<dt id="src.utility.calc_madelung_cc">
+<code class="descclassname">src.utility.</code><code class="descname">calc_madelung_cc</code><span class="sig-paren">(</span><em>mat</em>, <em>alloy_fn</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/utility.html#calc_madelung_cc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.utility.calc_madelung_cc" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Args:</dt>
+<dd><ul class="first last simple">
+<li>‘mat’ is the charge-charge interaction matrix.</li>
+<li>‘alloy_fn’ specifies the distribution of charges.</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tests.html">Tests</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tests.html#charge-charge">Charge-charge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tests.html#dipole-dipole">Dipole-dipole</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tests.html#displaced-charges">Displaced charges</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tests.html#charge-dipole">Charge-dipole</a></li>
+</dd>
+</dl>
+<p>Calculate the Madelung constant due to the charge-charge interaction.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.utility.calc_madelung_cd">
+<code class="descclassname">src.utility.</code><code class="descname">calc_madelung_cd</code><span class="sig-paren">(</span><em>mat</em>, <em>alloy_fn</em>, <em>alloy_hn</em>, <em>alloy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/utility.html#calc_madelung_cd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.utility.calc_madelung_cd" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Args:</dt>
+<dd><ul class="first last simple">
+<li>‘mat’ is the charge-dipole interaction matrix.</li>
+<li>‘alloy_fn’ is the charge configuration.</li>
+<li>‘alloy_hn’ is the dipole configuration.</li>
+<li>‘alloy’ file contains the information to map index between 3D and 1D for easy use in this funciton.</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.utility.calc_madelung_dd">
+<code class="descclassname">src.utility.</code><code class="descname">calc_madelung_dd</code><span class="sig-paren">(</span><em>mat</em>, <em>alloy_fn</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/utility.html#calc_madelung_dd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.utility.calc_madelung_dd" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Args:</dt>
+<dd><ul class="first last simple">
+<li>‘mat’ is the dipole-dipole interaction matrix.</li>
+<li>‘alloy_fn’ specifies the dipole configuration.</li>
 </ul>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
-</ul>
+</dd>
+</dl>
+<p>Calculate the “Madelung constant” due to the dipole-dipole interaction.</p>
+</dd></dl>
+
 </div>
 
 
@@ -196,8 +210,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Theory.html" class="btn btn-neutral float-right" title="Theory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tests.html" class="btn btn-neutral float-right" title="Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="configuration.html" class="btn btn-neutral" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

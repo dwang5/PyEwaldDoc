@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to PyEwald’s documentation! &mdash; PyEwald 0.1 documentation</title>
+  <title>Supercell &mdash; PyEwald 0.1 documentation</title>
   
 
   
@@ -28,7 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Theory" href="Theory.html" /> 
+    <link rel="next" title="Interaction matrix" href="matrix.html" />
+    <link rel="prev" title="Theory" href="Theory.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -47,7 +48,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> PyEwald
+            <a href="index.html" class="icon icon-home"> PyEwald
           
 
           
@@ -82,9 +83,9 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Theory.html">Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="supercell.html">Supercell</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Supercell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">Interaction matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utility.html">Utility</a></li>
@@ -104,7 +105,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">PyEwald</a>
+          <a href="index.html">PyEwald</a>
         
       </nav>
 
@@ -133,15 +134,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Welcome to PyEwald’s documentation!</li>
+      <li>Supercell</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/supercell.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -154,38 +155,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-pyewald-s-documentation">
-<h1>Welcome to PyEwald’s documentation!<a class="headerlink" href="#welcome-to-pyewald-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Theory.html">Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="supercell.html">Supercell</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix.html">Interaction matrix</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="matrix.html#charge-charge">Charge_charge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matrix.html#dipole-dipole-and-others">Dipole_dipole and others</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tests.html">Tests</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tests.html#charge-charge">Charge-charge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tests.html#dipole-dipole">Dipole-dipole</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tests.html#displaced-charges">Displaced charges</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tests.html#charge-dipole">Charge-dipole</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="supercell">
+<h1>Supercell<a class="headerlink" href="#supercell" title="Permalink to this headline">¶</a></h1>
+<p>Construct the supercell.</p>
+<span class="target" id="module-supercell"></span><span class="target" id="module-Supercell"></span><dl class="class">
+<dt id="supercell.Supercell">
+<em class="property">class </em><code class="descclassname">supercell.</code><code class="descname">Supercell</code><span class="sig-paren">(</span><em>n1</em>, <em>n2</em>, <em>n3</em>, <em>lattice</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/supercell.html#Supercell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#supercell.Supercell" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">n1,n2,n3 are the number of repeated unitcells along the three directions of
+the ‘lattice’.</p>
+<p class="last">lattice specifies the Bravais lattice of a <strong>unit cell</strong>.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This version is not compitable with previous ones as</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li>All the index starts from 0.</li>
+<li>Arrays (e.g. lattice and reci lattice) are row majored.</li>
 </ul>
+<p class="last">The reason is to use Pybind11 that binds to C++ instead of Fortran.</p>
+</div>
+<dl class="method">
+<dt id="supercell.Supercell.rec_lat">
+<code class="descname">rec_lat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/supercell.html#Supercell.rec_lat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#supercell.Supercell.rec_lat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates reciprocal lattice vectors.</p>
+<p>The convention follows “Solid state physics” by
+Lu Dong, Jiang Ping … Eq. (2.2.2)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="supercell.Supercell.set_supercell">
+<code class="descname">set_supercell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/supercell.html#Supercell.set_supercell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#supercell.Supercell.set_supercell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiply the n1,n2,n3 to the unitcell vectors to form the superlattice.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="supercell.Supercell.volcell">
+<code class="descname">volcell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/supercell.html#Supercell.volcell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#supercell.Supercell.volcell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Volume of the supercell.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -196,8 +211,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Theory.html" class="btn btn-neutral float-right" title="Theory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="matrix.html" class="btn btn-neutral float-right" title="Interaction matrix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="Theory.html" class="btn btn-neutral" title="Theory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

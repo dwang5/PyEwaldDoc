@@ -1,0 +1,11 @@
+Configuration
+****************************************
+
+Generate charge and dipole configurations, especially convenient for
+high-symmetric configurations. The generated matrix (in 'netcdf' format) stores the information regarding dipole/charge on each site.
+
+.. automodule:: configuration
+   :members:
+
+
+

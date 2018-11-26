@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="License" href="license.html" />
-    <link rel="prev" title="Source code" href="code.html" /> 
+    <link rel="prev" title="Utility" href="utility.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -85,13 +85,19 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Theory.html">Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supercell.html">Supercell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html">Interaction matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tests</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#charge-charge">Charge-charge</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-tests.CsCl">CsCl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nacl">NaCl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cscl">CsCl</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#dipole-dipole">Dipole-dipole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#displaced-charges">Displaced charges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#charge-dipole">Charge-dipole</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -159,27 +165,93 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-tests">
-<span id="tests"></span><h1>Tests<a class="headerlink" href="#module-tests" title="Permalink to this headline">¶</a></h1>
-<p>PyEwald tests.</p>
+  <div class="section" id="tests">
+<h1>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h1>
+<p>We build a series of tests to verify the programs we have written are correct.</p>
 <div class="section" id="charge-charge">
 <h2>Charge-charge<a class="headerlink" href="#charge-charge" title="Permalink to this headline">¶</a></h2>
 <p>Use charge-charge interaction matrix to calculate the Madelung constans as a test
 to the program.</p>
-<div class="section" id="module-tests.CsCl">
-<span id="cscl"></span><h3>CsCl<a class="headerlink" href="#module-tests.CsCl" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-CsCl"></span><p>Note this value is the energy per “ion”. For N pairs of ions,</p>
+<div class="section" id="nacl">
+<h3>NaCl<a class="headerlink" href="#nacl" title="Permalink to this headline">¶</a></h3>
+<p>‘tests/NaCl.py’.</p>
+<span class="target" id="module-NaCl"></span><span class="target" id="module-NaCl.py"></span><p>See the notes for ‘CsCl’.
+For NaCl, the value is  <span class="math">\(M_0=-0.8738\)</span>.</p>
+</div>
+<div class="section" id="cscl">
+<h3>CsCl<a class="headerlink" href="#cscl" title="Permalink to this headline">¶</a></h3>
+<p>‘tests/CsCl.py’.</p>
+<span class="target" id="module-CsCl"></span><span class="target" id="module-CsCl"></span><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The value calculated here is per “ion”. For <span class="math">\(N\)</span> pairs of ions,</p>
 <div class="math">
 \[U_{\textrm{coulomb}} = 2 N M_0 e^2/(4\pi\varepsilon_0)\]</div>
-<p>where <span class="math">\(2M_0\)</span> is the usual Madelung constant.</p>
-<p>For CsCl, the value is  <span class="math">\(M_0=-0.8813373865355693\)</span>
-[The Journal of Chemical Physics, <em>34</em>, 2004 (1961)].</p>
-<p>Also see pp 40 of “Solid State Physics” by Lu Dong; Jiang Ping;
-Xu Zhizhong</p>
+<p class="last">where <span class="math">\(2M_0\)</span> is the usual Madelung constant.</p>
+</div>
+<p>For CsCl, the value is  <span class="math">\(M_0=-0.8813\)</span>, see The Journal of Chemical Physics, <strong>34</strong>, 2004 (1961).
+Also see pp 40 of “Solid State Physics” by Lu Dong; Jiang Ping; Xu Zhizhong.</p>
 </div>
 </div>
 <div class="section" id="dipole-dipole">
 <h2>Dipole-dipole<a class="headerlink" href="#dipole-dipole" title="Permalink to this headline">¶</a></h2>
+<p>‘tsets/dipole.py’.</p>
+<span class="target" id="module-dipole"></span><span class="target" id="module-dipole.py"></span><p>The configuration can be found in Zhong et al (PRB, 52, 6301).
+Results for comparison is given by Nishimatsu et al in units of Z*^2/epsilon*a0^3
+(Phys. Rev. B,82,134106 (2010).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">k</th>
+<th class="head">value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Gamma</td>
+<td>-2/3*pi</td>
+</tr>
+<tr class="row-odd"><td>X1</td>
+<td>4.84372</td>
+</tr>
+<tr class="row-even"><td>X5</td>
+<td>-2.42186</td>
+</tr>
+<tr class="row-odd"><td>M3</td>
+<td>-2.67679</td>
+</tr>
+<tr class="row-even"><td>M5</td>
+<td>1.33839</td>
+</tr>
+<tr class="row-odd"><td>R25</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>Simga_Lo</td>
+<td>2.93226</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="displaced-charges">
+<h2>Displaced charges<a class="headerlink" href="#displaced-charges" title="Permalink to this headline">¶</a></h2>
+<p>‘tsets/displaced_ions.py’.</p>
+<span class="target" id="module-displaced_ions"></span><span class="target" id="module-displaced_ions.py"></span><p>In this test, we set up a uniformly displaced charegs in a cubic lattice.
+An application of this type of interaction matrix will be shown in a
+later publications.</p>
+</div>
+<div class="section" id="charge-dipole">
+<h2>Charge-dipole<a class="headerlink" href="#charge-dipole" title="Permalink to this headline">¶</a></h2>
+<p>‘tsets/test_charge_dipole.py’.</p>
+<span class="target" id="module-test_charge_dipole"></span><span class="target" id="module-test_charge_dipole.py"></span><p>One particular configuration is that</p>
+<ol class="arabic simple">
+<li>The sign of charge alternates along z.</li>
+<li>Each dipole only has the p_z component, which also alternates along z.</li>
+</ol>
+<p>The charge-dipole energy is easy to estimate. In the folder
+“tests/verify_charge-dipole”, we also have a program to directly calculate this
+value in real space. The result agrees with what we have obtained here using
+the charge-dipole interaction matrix.</p>
 </div>
 </div>
 
@@ -194,7 +266,7 @@ Xu Zhizhong</p>
         <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="code.html" class="btn btn-neutral" title="Source code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="utility.html" class="btn btn-neutral" title="Utility" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -203,7 +275,7 @@ Xu Zhizhong</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, D. Wang
+        &copy; Copyright 2018, D. Wang.
 
     </p>
   </div>
@@ -222,24 +294,21 @@ Xu Zhizhong</p>
 
   
 
-    
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'0.1',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

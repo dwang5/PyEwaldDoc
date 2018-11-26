@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>src.utility &mdash; PyEwald 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> PyEwald
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Theory.html">Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../supercell.html">Supercell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../matrix.html">Interaction matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tests.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PyEwald</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>src.utility</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for src.utility</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: utility</span>
+<span class="sd">    :synopsis: Contains several functions to calculate the interaction energies.</span>
+
+<span class="sd">.. moduleauthor:: D. Wang &lt;dwang5@zoho.com&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">Dataset</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="calc_madelung_cc"><a class="viewcode-back" href="../../utility.html#src.utility.calc_madelung_cc">[docs]</a><span class="k">def</span> <span class="nf">calc_madelung_cc</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">alloy_fn</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">        * &#39;mat&#39; is the charge-charge interaction matrix.</span>
+<span class="sd">        * &#39;alloy_fn&#39; specifies the distribution of charges.</span>
+
+
+<span class="sd">    Calculate the Madelung constant due to the charge-charge interaction.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dum_1</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">alloy_fn</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">dum_1</span><span class="p">[</span><span class="s1">&#39;matrix&#39;</span><span class="p">]</span>
+    <span class="n">delung</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">c1</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># print(config.shape[:])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">delung</span> <span class="o">+=</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">config</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">delung</span></div>
+
+
+<div class="viewcode-block" id="calc_madelung_dd"><a class="viewcode-back" href="../../utility.html#src.utility.calc_madelung_dd">[docs]</a><span class="k">def</span> <span class="nf">calc_madelung_dd</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">alloy_fn</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">       * &#39;mat&#39; is the dipole-dipole interaction matrix.</span>
+<span class="sd">       * &#39;alloy_fn&#39; specifies the dipole configuration.</span>
+
+<span class="sd">    Calculate the &quot;Madelung constant&quot; due to the dipole-dipole interaction.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dum_1</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">alloy_fn</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">dum_1</span><span class="p">[</span><span class="s1">&#39;matrix&#39;</span><span class="p">]</span>
+
+    <span class="n">delung</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">config</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">config</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">config</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">dum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="p">[</span><span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span>
+            <span class="p">[</span><span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span>
+            <span class="p">[</span><span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+        <span class="p">])</span>
+        <span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">config</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">config</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">config</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+        <span class="n">delung</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dum</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">delung</span></div>
+
+
+<div class="viewcode-block" id="calc_madelung_cd"><a class="viewcode-back" href="../../utility.html#src.utility.calc_madelung_cd">[docs]</a><span class="k">def</span> <span class="nf">calc_madelung_cd</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">alloy_fn</span><span class="p">,</span> <span class="n">alloy_hn</span><span class="p">,</span> <span class="n">alloy</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     Args:</span>
+<span class="sd">        * &#39;mat&#39; is the charge-dipole interaction matrix.</span>
+<span class="sd">        * &#39;alloy_fn&#39; is the charge configuration.</span>
+<span class="sd">        * &#39;alloy_hn&#39; is the dipole configuration.</span>
+<span class="sd">        * &#39;alloy&#39; file contains the information to map index between 3D and 1D for easy use in this funciton.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">dum_1</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">alloy_fn</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">config_c</span> <span class="o">=</span> <span class="n">dum_1</span><span class="p">[</span><span class="s1">&#39;matrix&#39;</span><span class="p">]</span>
+
+    <span class="n">dum_2</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">alloy_hn</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">config_d</span> <span class="o">=</span> <span class="n">dum_2</span><span class="p">[</span><span class="s1">&#39;matrix&#39;</span><span class="p">]</span>
+
+    <span class="n">delung</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">assert</span> <span class="p">(</span><span class="n">config_d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">alloy</span><span class="o">.</span><span class="n">nsites</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="p">(</span><span class="n">config_c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">alloy</span><span class="o">.</span><span class="n">nsites</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">config_c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">c2</span> <span class="o">=</span> <span class="n">config_c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">config_d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">config_d</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">config_d</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">config_d</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+
+            <span class="n">ix</span> <span class="o">=</span> <span class="n">alloy</span><span class="o">.</span><span class="n">ixa</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">alloy</span><span class="o">.</span><span class="n">ixa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">iy</span> <span class="o">=</span> <span class="n">alloy</span><span class="o">.</span><span class="n">iya</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">alloy</span><span class="o">.</span><span class="n">iya</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">iz</span> <span class="o">=</span> <span class="n">alloy</span><span class="o">.</span><span class="n">iza</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">alloy</span><span class="o">.</span><span class="n">iza</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">ixi</span> <span class="o">=</span> <span class="n">ix</span> <span class="o">+</span> <span class="n">alloy</span><span class="o">.</span><span class="n">n1</span>
+            <span class="n">iyi</span> <span class="o">=</span> <span class="n">iy</span> <span class="o">+</span> <span class="n">alloy</span><span class="o">.</span><span class="n">n2</span>
+            <span class="n">izi</span> <span class="o">=</span> <span class="n">iz</span> <span class="o">+</span> <span class="n">alloy</span><span class="o">.</span><span class="n">n3</span>
+
+            <span class="n">dist</span> <span class="o">=</span> <span class="n">alloy</span><span class="o">.</span><span class="n">iaa</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">ix</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">iy</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">iz</span><span class="p">)]</span>
+            <span class="n">dum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+                <span class="n">mat</span><span class="p">[</span><span class="n">ixi</span><span class="p">,</span> <span class="n">iyi</span><span class="p">,</span> <span class="n">izi</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="n">mat</span><span class="p">[</span><span class="n">ixi</span><span class="p">,</span> <span class="n">iyi</span><span class="p">,</span> <span class="n">izi</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="n">mat</span><span class="p">[</span><span class="n">ixi</span><span class="p">,</span> <span class="n">iyi</span><span class="p">,</span> <span class="n">izi</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+
+            <span class="n">delung</span> <span class="o">+=</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dum</span><span class="p">,</span> <span class="n">v1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">delung</span> <span class="o">/</span> <span class="n">alloy</span><span class="o">.</span><span class="n">nsites</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, D. Wang.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

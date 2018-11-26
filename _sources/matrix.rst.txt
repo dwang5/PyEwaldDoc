@@ -1,0 +1,25 @@
+Interaction matrix
+****************************
+Charge_charge
+=================
+
+Generate charge_charge interaction matrix.
+
+.. automodule:: charge_charge
+   :members:
+
+Dipole_dipole and others
+==============================
+
+Generate dipole-dipole, charge-dipole, and charge-displacement matrices.
+The structure of these programs are similar to that of charge-charge.
+
+.. automodule:: dipole_dipole
+   :members:
+
+.. automodule:: charge_dipole
+   :members:
+
+.. automodule:: charge_displacement
+   :members:
+

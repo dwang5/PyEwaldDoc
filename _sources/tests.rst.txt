@@ -1,7 +1,7 @@
 Tests
 **************************
 
-.. automodule:: tests
+We build a series of tests to verify the programs we have written are correct.
 
 Charge-charge
 =============================
@@ -9,11 +9,40 @@ Charge-charge
 Use charge-charge interaction matrix to calculate the Madelung constans as a test
 to the program.
 
+NaCl
+----
+'tests/NaCl.py'.
+
+.. automodule:: NaCl
+   :members:
+
 CsCl
 ----
+'tests/CsCl.py'.
 
-.. automodule:: tests.CsCl
+.. automodule:: CsCl
    :members:
+
+
+
 
 Dipole-dipole
 =============================
+'tsets/dipole.py'.
+
+.. automodule:: dipole
+   :members:
+
+Displaced charges
+=============================
+'tsets/displaced_ions.py'.
+
+.. automodule:: displaced_ions
+   :members:
+
+Charge-dipole
+=============================
+'tsets/test_charge_dipole.py'.
+
+.. automodule:: test_charge_dipole
+   :members:

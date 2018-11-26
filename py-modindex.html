@@ -90,7 +90,10 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Theory.html">Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supercell.html">Supercell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html">Interaction matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tests.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
@@ -158,8 +161,11 @@
 
    <div class="modindex-jumpbox">
    <a href="#cap-c"><strong>c</strong></a> | 
+   <a href="#cap-d"><strong>d</strong></a> | 
+   <a href="#cap-n"><strong>n</strong></a> | 
    <a href="#cap-s"><strong>s</strong></a> | 
-   <a href="#cap-t"><strong>t</strong></a>
+   <a href="#cap-t"><strong>t</strong></a> | 
+   <a href="#cap-u"><strong>u</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -169,41 +175,138 @@
      <tr>
        <td></td>
        <td>
+       <a href="matrix.html#module-charge_charge"><code class="xref">charge_charge</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="matrix.html#module-Charge_charge"><code class="xref">Charge_charge</code></a></td><td>
+       <em>Generate the charge_charge interaction matrix.</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="matrix.html#module-charge_dipole"><code class="xref">charge_dipole</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="matrix.html#module-charge_displacement"><code class="xref">charge_displacement</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="matrix.html#module-Charge_displacement"><code class="xref">Charge_displacement</code></a></td><td>
+       <em>Generate the charge_displacement interaction matrix.</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="configuration.html#module-Configuratinos"><code class="xref">Configuratinos</code></a></td><td>
+       <em>Framework for constructing charge, dipole configurations.</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="configuration.html#module-configuration"><code class="xref">configuration</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
        <a href="tests.html#module-CsCl"><code class="xref">CsCl</code></a></td><td>
-       <em>Obtain the Madelung constant for CsCl.</em></td></tr>
+       <em>Obtain the Madelung constant for CsCl using the charge-charge interaction matrix.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-d"><td></td><td>
+       <strong>d</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="matrix.html#module-Dip_Dip"><code class="xref">Dip_Dip</code></a></td><td>
+       <em>Generate the Dipole_dipole interaction matrix.</em></td></tr>
+     <tr>
+       <td><img src="_static/minus.png" class="toggler"
+              id="toggle-1" style="display: none" alt="-" /></td>
+       <td>
+       <a href="tests.html#module-dipole"><code class="xref">dipole</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="tests.html#module-dipole.py"><code class="xref">dipole.py</code></a></td><td>
+       <em>Obtain the energy due to the diploe-dipole interaction for various dipole configurations.</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="matrix.html#module-dipole_dipole"><code class="xref">dipole_dipole</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td><img src="_static/minus.png" class="toggler"
+              id="toggle-2" style="display: none" alt="-" /></td>
+       <td>
+       <a href="tests.html#module-displaced_ions"><code class="xref">displaced_ions</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-2">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="tests.html#module-displaced_ions.py"><code class="xref">displaced_ions.py</code></a></td><td>
+       <em>Obtain the energy due to the displacement of ions.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-n"><td></td><td>
+       <strong>n</strong></td><td></td></tr>
+     <tr>
+       <td><img src="_static/minus.png" class="toggler"
+              id="toggle-3" style="display: none" alt="-" /></td>
+       <td>
+       <a href="tests.html#module-NaCl"><code class="xref">NaCl</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-3">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="tests.html#module-NaCl.py"><code class="xref">NaCl.py</code></a></td><td>
+       <em>Obtain the Madelung constant for NaCl using the charge-charge interaction matrix.</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-s"><td></td><td>
        <strong>s</strong></td><td></td></tr>
      <tr>
        <td><img src="_static/minus.png" class="toggler"
-              id="toggle-1" style="display: none" alt="-" /></td>
+              id="toggle-4" style="display: none" alt="-" /></td>
        <td>
-       <a href="code.html#module-src"><code class="xref">src</code></a></td><td>
+       <code class="xref">src</code></td><td>
        <em></em></td></tr>
-     <tr class="cg-1">
+     <tr class="cg-4">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="code.html#module-src.supercell"><code class="xref">src.supercell</code></a></td><td>
+       <a href="utility.html#module-src.utility"><code class="xref">src.utility</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="code.html#module-Supercell"><code class="xref">Supercell</code></a></td><td>
+       <a href="supercell.html#module-supercell"><code class="xref">supercell</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="supercell.html#module-Supercell"><code class="xref">Supercell</code></a></td><td>
        <em>Framework for constructing supercells.</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-t"><td></td><td>
        <strong>t</strong></td><td></td></tr>
      <tr>
        <td><img src="_static/minus.png" class="toggler"
-              id="toggle-2" style="display: none" alt="-" /></td>
+              id="toggle-5" style="display: none" alt="-" /></td>
        <td>
-       <a href="tests.html#module-tests"><code class="xref">tests</code></a></td><td>
+       <a href="tests.html#module-test_charge_dipole"><code class="xref">test_charge_dipole</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-2">
+     <tr class="cg-5">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="tests.html#module-tests.CsCl"><code class="xref">tests.CsCl</code></a></td><td>
-       <em></em></td></tr>
+       <a href="tests.html#module-test_charge_dipole.py"><code class="xref">test_charge_dipole.py</code></a></td><td>
+       <em>Test the charge-dipole interaction matrix with a few charge and dipole configurations.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-u"><td></td><td>
+       <strong>u</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="utility.html#module-utility"><code class="xref">utility</code></a></td><td>
+       <em>Contains several functions to calculate the interaction energies.</em></td></tr>
    </table>
 
 
@@ -217,7 +320,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, D. Wang
+        &copy; Copyright 2018, D. Wang.
 
     </p>
   </div>
@@ -236,24 +339,21 @@
 
   
 
-    
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'0.1',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

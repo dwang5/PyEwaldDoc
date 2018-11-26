@@ -2,3 +2,6 @@ Theory
 *******
 
 The Ewald approach is used. For details, see our paper.
+
+The dipole-dipole interaction had been originally investigated by
+Zhong, ..., in PRB 6301, which has inspired this work.
