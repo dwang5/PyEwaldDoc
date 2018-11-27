@@ -87,6 +87,8 @@
 <li class="toctree-l1"><a class="reference internal" href="Theory.html">Theory</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Source code</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#supercell">Supercell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#charge-charge">Charge_charge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.utility">utility</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tests.html">Tests</a></li>
@@ -202,6 +204,76 @@ Lu Dong, Jiang Ping … Eq. (2.2.2)</p>
 <dd><p>Volume of the supercell.</p>
 </dd></dl>
 
+</dd></dl>
+
+</div>
+<div class="section" id="charge-charge">
+<h2>Charge_charge<a class="headerlink" href="#charge-charge" title="Permalink to this headline">¶</a></h2>
+<p>Generate charge_charge interaction matrix.</p>
+<span class="target" id="module-src.charge_charge"></span><span class="target" id="module-Charge_charge"></span><dl class="class">
+<dt id="src.charge_charge.Charge_charge">
+<em class="property">class </em><code class="descclassname">src.charge_charge.</code><code class="descname">Charge_charge</code><span class="sig-paren">(</span><em>n1</em>, <em>n2</em>, <em>nz</em>, <em>lattice</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/charge_charge.html#Charge_charge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.charge_charge.Charge_charge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Charge_charge inherits the <em>Supercell</em> class, it first initializes the supercell it works on.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>n1</strong> – Number of unit cells along the first Bravais vector of ‘lattice’.</li>
+<li><strong>n2</strong> – Number of unit cells along the second Bravais vector of ‘lattice’.</li>
+<li><strong>nz</strong> – Number of unit cells along the third Bravais vector of “lattice’.</li>
+<li><strong>lattice</strong> – The lattice of the <strong>unit cell</strong>, not the supercell.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.utility">
+<span id="utility"></span><h2>utility<a class="headerlink" href="#module-src.utility" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-utility"></span><dl class="function">
+<dt id="src.utility.calc_madelung_cc">
+<code class="descclassname">src.utility.</code><code class="descname">calc_madelung_cc</code><span class="sig-paren">(</span><em>mat</em>, <em>alloy_fn</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/utility.html#calc_madelung_cc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.utility.calc_madelung_cc" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Args:</dt>
+<dd><ul class="first last simple">
+<li>‘mat’ is the charge-charge interaction matrix.</li>
+<li>‘alloy_fn’ specifies the distribution of charges.</li>
+</ul>
+</dd>
+</dl>
+<p>Calculate the Madelung constant due to the charge-charge interaction.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.utility.calc_madelung_cd">
+<code class="descclassname">src.utility.</code><code class="descname">calc_madelung_cd</code><span class="sig-paren">(</span><em>mat</em>, <em>alloy_fn</em>, <em>alloy_hn</em>, <em>alloy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/utility.html#calc_madelung_cd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.utility.calc_madelung_cd" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Args:</dt>
+<dd><ul class="first last simple">
+<li>‘mat’ is the charge-dipole interaction matrix.</li>
+<li>‘alloy_fn’ is the charge configuration.</li>
+<li>‘alloy_hn’ is the dipole configuration.</li>
+<li>‘alloy’ file contains the information to map index between 3D and 1D for easy use in this funciton.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.utility.calc_madelung_dd">
+<code class="descclassname">src.utility.</code><code class="descname">calc_madelung_dd</code><span class="sig-paren">(</span><em>mat</em>, <em>alloy_fn</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/utility.html#calc_madelung_dd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.utility.calc_madelung_dd" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Args:</dt>
+<dd><ul class="first last simple">
+<li>‘mat’ is the dipole-dipole interaction matrix.</li>
+<li>‘alloy_fn’ specifies the dipole configuration.</li>
+</ul>
+</dd>
+</dl>
+<p>Calculate the “Madelung constant” due to the dipole-dipole interaction.</p>
 </dd></dl>
 
 </div>

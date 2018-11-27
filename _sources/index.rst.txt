@@ -6,6 +6,8 @@
 Welcome to PyEwald's documentation!
 ===================================
 
+The code is hosted at https://gitlab.com/dwang5/PyEwald
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

@@ -12,3 +12,18 @@ Construct the supercell.
 .. automodule:: src.supercell
    :members:
 
+
+Charge_charge
+==========================
+
+Generate charge_charge interaction matrix.
+
+.. automodule:: src.charge_charge
+   :members:
+
+
+utility
+====================
+.. automodule:: src.utility
+   :members:
+
